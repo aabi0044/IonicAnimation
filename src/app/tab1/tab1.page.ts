@@ -2,6 +2,9 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 // import * as anime from 'animejs';
 import anime from 'animejs';
 import   {flip}  from 'number-flip';
+import{NativePageTransitions,NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 
@@ -14,7 +17,7 @@ export class Tab1Page {
   @ViewChild('box') box: ElementRef;
   @ViewChild('numberbtn', { read: ElementRef }) private btn: ElementRef;
   flipAnim = null;
-  constructor() { }
+  constructor(private pageTransition:NativePageTransitions,public navCtrl: NavController,private router:Router) { }
   callAnime() {
     anime({
       targets: '.animate-me',
@@ -52,8 +55,23 @@ this.flipAnim.flipTo( ({
   }
   animateItems() {
 
+
   }
   bounce() {
 
+  }
+  transition(){
+    // let options:NativeTransitionOptions={
+    //   direction:'left',
+    //   duration:400,
+    //   slowdownfactor:-1,
+    //   iosdelay:50
+    // }
+    let options: NativeTransitionOptions = {
+      duration: 700
+    };
+    this.pageTransition.fade(options);
+    this.navCtrl.navigateRoot('home');
+    // this.navCtrl.setRoot('SecondPage');
   }
 }
