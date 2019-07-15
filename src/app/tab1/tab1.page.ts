@@ -23,15 +23,11 @@ export class Tab1Page {
       targets: '.animate-me',
       translateX: [
         { value: -100, duration: 1200 },
-        {
- 
-        }
+     
       ],
       translateY: [
         { value: -190, duration: 1200 },
-        {
-      
-        }
+   
       ],
       rotate: '0turn',
       backgroundcolor: '#35489',
